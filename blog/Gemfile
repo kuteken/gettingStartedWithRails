@@ -40,3 +40,5 @@ gem 'spring',        group: :development
 
 gem 'guard'
 gem 'guard-bundler'
+gem 'rspec-rails'
+gem 'guard-rspec'
