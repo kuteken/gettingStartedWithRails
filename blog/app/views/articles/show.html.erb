@@ -1,6 +1,6 @@
 <h1>Show article</h1>
 
-<div>
+<div id="article">
   <p>
     title: <br />
     <%= @article.title %>
@@ -10,6 +10,49 @@
     <%= @article.detail %>
   </p>
 </div>
+
+<h2>Comments</h2>
+
+  <table class="comment">
+    <tr>
+      <th>commenter</th>
+      <th>detail</th>
+      <th>links</th>
+    </tr>
+    <% @article.comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= comment.commenter %>
+        </td>
+        <td>
+          <%= comment.detail %>
+        </td>
+        <td>
+          <%= link_to 'delete', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+<h2>Add comment</h2>
+
+<%= form_for([@article, @article.comments.build]) do |f| %>
+  <div id="comment_form">
+    <p>
+      <%= f.label :commenter %><br />
+      <%= f.text_field :commenter %>
+    </p>
+
+    <p>
+      <%= f.label :detail %><br />
+      <%= f.text_field :detail %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+  </div>
+<% end %>
 
 <%= link_to 'edit', edit_article_path(@article) %>
 <%= link_to 'list', articles_path %>
