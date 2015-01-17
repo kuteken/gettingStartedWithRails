@@ -1,0 +1,15 @@
+<h1>Show article</h1>
+
+<div>
+  <p>
+    title: <br />
+    <%= @article.title %>
+  </p>
+  <p>
+    detail: <br />
+    <%= @article.detail %>
+  </p>
+</div>
+
+<%= link_to 'edit', edit_article_path(@article) %>
+<%= link_to 'list', articles_path %>
